@@ -12,7 +12,6 @@ import '../style/app.css';
 // import 'angular-material/angular-material.css';
 
 import { headerDirective } from './header/header.component';
-import { searchDirective } from './searchresult/searchresult.component';
 import { setupServices } from './services';
 
 const APP_NAME = 'app';
@@ -35,11 +34,9 @@ angular.module(APP_NAME, ['ngMessages', 'ngAnimate', 'ngAria', 'ui.bootstrap'])
   .directive('app', app)
   .controller('AppCtrl', AppCtrl)
   .directive('appHeader', headerDirective)
-  .directive('searchResult', headerDirective);
 
 // inject services to the app
 setupServices(APP_NAME);
-
 
 
 export default APP_NAME;
