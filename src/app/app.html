@@ -43,7 +43,7 @@
 	        <div class="container">
 
 	            <div class="row tim-row">
-	                <div class="col-md-8 col-md-offset-2">
+	                <div class="container">
               
 	                    <main ng-if="vm.movieData === null" >
                          <!-- Images (and assets) are parsed and loaded from within the public directory -->
@@ -57,41 +57,71 @@
                  
 <div ng-repeat="result in vm.movieData.results" ng-if="$index % 3 == 0" class="row">
     <div class="col-xs-4">
+        <div class="card card-nav-tabs">
+            
        <p> {{vm.movieData.results[$index].title}}</p>
+            
+        <div class="col-xs-4">
              <span ng-if="vm.movieData.results[$index].poster_path.length !== 0 && vm.movieData.results[$index].poster_path !== null">
             <img ng-src="http://image.tmdb.org/t/p/w185{{vm.movieData.results[$index].poster_path}}"
-             class="img-thumbnail" width="85" height="178">
+             class="img-rounded img-responsive img-raised" width="85" height="178">
             </span>
 
              <span ng-if="vm.movieData.results[$index].poster_path === null">
             <img ng-src="http://vexmovies.com/wp-content/themes/grifus2/images/noimg.png"
-             class="img-thumbnail" width="85" height="178">
+             class="img-rounded img-responsive img-raised" width="85" height="178">
             </span>
+            <div style="padding: 10px 0px">{{vm.movieData.results[$index].release_date}}</div>
+        </div>
+        <div class="col-xs-8">
+            {{vm.movieData.results[$index].overview | limitTo : 100}}
+            {{vm.movieData.results[$index].overview.length > 100 ? '...' : ''}} 
+        </div>
+    
+    </div>
     </div>
     <div class="col-xs-4" ng-if="vm.movieData.results.length > ($index + 1)">
+        <div class="card card-nav-tabs">
         <p>{{vm.movieData.results[$index + 1].title}}</p>
+        <div class="col-xs-4">
      <span ng-if="vm.movieData.results[$index + 1].poster_path.length !== 0 && vm.movieData.results[$index + 1].poster_path !== null">
             <img ng-src="http://image.tmdb.org/t/p/w185{{vm.movieData.results[$index + 1].poster_path}}"
-             class="img-thumbnail" width="85" height="178">
+             class="img-rounded img-responsive img-raised" width="85" height="178">
             </span>
 
              <span ng-if="vm.movieData.results[$index + 1].poster_path === null">
             <img ng-src="http://vexmovies.com/wp-content/themes/grifus2/images/noimg.png"
-             class="img-thumbnail" width="85" height="178">
+             class="img-rounded img-responsive img-raised" width="85" height="178">
             </span>
-    
+             <div style="padding: 10px 0px">{{vm.movieData.results[$index + 1].release_date}}</div>
+        </div>
+         <div class="col-xs-8">
+            {{vm.movieData.results[$index + 1].overview | limitTo : 100}}
+            {{vm.movieData.results[$index + 1].overview.length > 100 ? '...' : ''}} 
+        </div>
+        </div>
     </div>
     <div class="col-xs-4" ng-if="vm.movieData.results.length > ($index + 2)">
-       <p> {{vm.movieData.results[$index + 2].title}}</p>
+        <div class="card card-nav-tabs">
+            <p> {{vm.movieData.results[$index + 2].title}}</p>
+             <div class="col-xs-4">
+       
 <span ng-if="vm.movieData.results[$index + 2].poster_path.length !== 0 && vm.movieData.results[$index + 2].poster_path !== null">
             <img ng-src="http://image.tmdb.org/t/p/w185{{vm.movieData.results[$index + 2].poster_path}}"
-             class="img-thumbnail" width="85" height="178">
+             class="img-rounded img-responsive img-raised" width="85" height="178">
             </span>
 
              <span ng-if="vm.movieData.results[$index + 2].poster_path === null">
             <img ng-src="http://vexmovies.com/wp-content/themes/grifus2/images/noimg.png"
-             class="img-thumbnail" width="85" height="178">
+             class="img-rounded img-responsive img-raised" width="85" height="178">
             </span>
+             <div style="padding: 10px 0px">{{vm.movieData.results[$index + 1].release_date}}</div>
+             </div>
+         <div class="col-xs-8">
+            {{vm.movieData.results[$index + 2].overview | limitTo : 100}}
+            {{vm.movieData.results[$index + 2].overview.length > 100 ? '...' : ''}} 
+        </div>
+    </div>
     </div>
 </div>        
     </div>
