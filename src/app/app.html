@@ -49,7 +49,27 @@
                          <!-- Images (and assets) are parsed and loaded from within the public directory -->
                       <img src="/img/movie.png">
                       </main>
-                <search-result></search-result>
+                
+                       <div class="row" ng-if="vm.movieData !== null">
+                         <h2 class="text-center"
+                        ng-if="vm.movieData !== null">
+                        Found : <span ng-bind="vm.movieData.total_results"></span></h2>
+	             
+        <div class="col-md-4 col-sm-6 col-12" ng-repeat="result in vm.movieData.results">
+            <p>{{result.title}}</p>
+
+            <span ng-if="result.poster_path.length !== 0 && result.poster_path !== null">
+            <img ng-src="http://image.tmdb.org/t/p/w185{{result.poster_path}}"
+             class="img-thumbnail" width="85" height="178">
+            </span>
+
+             <span ng-if="result.poster_path === null">
+            <img ng-src="http://vexmovies.com/wp-content/themes/grifus2/images/noimg.png"
+             class="img-thumbnail" width="85" height="178">
+            </span>
+            <!-- <p>{{result.overview}}</p> -->
+        </div>
+    </div>
 
 
 
