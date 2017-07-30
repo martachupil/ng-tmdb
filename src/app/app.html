@@ -47,13 +47,16 @@
               
 	                    <main ng-if="vm.movieData === null" >
                          <!-- Images (and assets) are parsed and loaded from within the public directory -->
-                      <img src="/img/movie.png">
+                      <!-- <img src="/img/movie.png"> -->
+                      <div class="text-center"><h4 class="ivy-color">
+                          Архів всіх фільмів. Пошук фільмів.</h4></div>
+                          <div class="text-center">знайди фільм який ви так довго шукали :)</div>
                       </main>
                 
                        <div class="row" ng-if="vm.movieData !== null">
-                         <h2 class="text-center"
+                         <h4
                         ng-if="vm.movieData !== null">
-                        Found : <span ng-bind="vm.movieData.total_results"></span></h2>
+                        знайдено : <span class="ivy-color" ng-bind="vm.movieData.total_results"></span></h4>
                  
 <div ng-repeat="result in vm.movieData.results" ng-if="$index % 3 == 0" class="row">
     <div class="col-xs-4">

@@ -1,6 +1,9 @@
 body, h1, .h1, h2, .h2, h3, .h3 {
         font-family: "Roboto", "Helvetica", "Arial", sans-serif;
 }
+.ivy-color {
+        color: #9c27b0;
+}
 .movie-title {
         padding: 15px 0 0 15px;
         font-weight: bold;
