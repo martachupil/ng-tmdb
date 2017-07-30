@@ -28,6 +28,12 @@ class AppCtrl {
   constructor() {
     this.url = 'https://github.com/martachupil';
   }
+
+  getYearRelease(date) {
+    let name = date.split('-');
+    return name[0];
+  }
+
 }
 
 angular.module(APP_NAME, ['ngMessages', 'ngAnimate', 'ngAria', 'ui.bootstrap'])
