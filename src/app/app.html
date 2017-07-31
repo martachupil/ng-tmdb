@@ -103,6 +103,8 @@
          <div class="col-xs-8">
             {{vm.movieData.results[$index + 1].overview | limitTo : 100}}
             {{vm.movieData.results[$index + 1].overview.length > 100 ? '...' : ''}} 
+             <!-- <div class="movie-vote">
+                 {{vm.movieData.results[$index + 1].vote_average}}</div> -->
         </div>
         </div>
     </div>

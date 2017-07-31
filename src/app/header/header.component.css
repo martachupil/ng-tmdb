@@ -12,3 +12,6 @@ header {
     align-items: baseline;
     margin: 50px 0px;
 }
+.form-control, .form-group .form-control {
+    color: white;
+}
