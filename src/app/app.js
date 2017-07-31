@@ -25,8 +25,20 @@ let app = () => {
 };
 
 class AppCtrl {
-  constructor() {
+  constructor(tmdb) {
+    this.$inject = ['tmdb'];
+    this.tmdb = tmdb;
+    this.latestMovies = null;
+
     this.url = 'https://github.com/martachupil';
+    // console.log(this.tmdb.getNewMovieReleaseDates());
+
+    if (this.latestMovies === null) {
+    this.tmdb.getNewMovieReleaseDates()
+      .then((r) => this.latestMovies = r.data)
+      .catch((e) => console.error(e));
+    }
+
   }
 
   getYearRelease(date) {

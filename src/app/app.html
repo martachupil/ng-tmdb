@@ -49,12 +49,90 @@
 	                <div class="container">
               
 	                    <main ng-if="vm.movieData === null" >
-                         <!-- Images (and assets) are parsed and loaded from within the public directory -->
-                      <!-- <img src="/img/movie.png"> -->
+                        
+                    
+
                       <div class="text-center"><h4 class="ivy-color">
-                          Архів всіх фільмів. Пошук фільмів.</h4></div>
-                          <div class="text-center">знайди фільм який ви так довго шукали :)</div>
-                      </main>
+                          Зараз у кінотеатрах</h4></div>
+
+
+                          <div ng-repeat="result in app.latestMovies.results" ng-if="$index % 3 == 0" class="row">
+    <div class="col-xs-4">
+        <div class="card card-nav-tabs">
+            
+       <p class="movie-title"> {{app.latestMovies.results[$index].title}}</p>
+            
+        <div class="col-xs-4">
+             <span ng-if="app.latestMovies.results[$index].poster_path.length !== 0 && app.latestMovies.results[$index].poster_path !== null">
+            <img ng-src="http://image.tmdb.org/t/p/w185{{app.latestMovies.results[$index].poster_path}}"
+             class="img-rounded img-responsive img-raised" width="85" height="178">
+            </span>
+
+             <span ng-if="app.latestMovies.results[$index].poster_path === null">
+            <img ng-src="http://vexmovies.com/wp-content/themes/grifus2/images/noimg.png"
+             class="img-rounded img-responsive img-raised" width="85" height="178">
+            </span>
+            <div class="movie-release">
+                {{app.getYearRelease(app.latestMovies.results[$index].release_date)}}</div>
+        </div>
+        <div class="col-xs-8">
+            {{app.latestMovies.results[$index].overview | limitTo : 100}}
+            {{app.latestMovies.results[$index].overview.length > 100 ? '...' : ''}} 
+        </div>
+    
+    </div>
+    </div>
+    <div class="col-xs-4" ng-if="app.latestMovies.results.length > ($index + 1)">
+        <div class="card card-nav-tabs">
+        <p class="movie-title">{{app.latestMovies.results[$index + 1].title}}</p>
+        <div class="col-xs-4">
+     <span ng-if="app.latestMovies.results[$index + 1].poster_path.length !== 0 && app.latestMovies.results[$index + 1].poster_path !== null">
+            <img ng-src="http://image.tmdb.org/t/p/w185{{app.latestMovies.results[$index + 1].poster_path}}"
+             class="img-rounded img-responsive img-raised" width="85" height="178">
+            </span>
+
+             <span ng-if="app.latestMovies.results[$index + 1].poster_path === null">
+            <img ng-src="http://vexmovies.com/wp-content/themes/grifus2/images/noimg.png"
+             class="img-rounded img-responsive img-raised" width="85" height="178">
+            </span>
+             <div class="movie-release">
+                 {{app.getYearRelease(app.latestMovies.results[$index + 1].release_date)}}</div>
+        </div>
+         <div class="col-xs-8">
+            {{app.latestMovies.results[$index + 1].overview | limitTo : 100}}
+            {{app.latestMovies.results[$index + 1].overview.length > 100 ? '...' : ''}} 
+             <!-- <div class="movie-vote">
+                 {{vm.movieData.results[$index + 1].vote_average}}</div> -->
+        </div>
+        </div>
+    </div>
+    <div class="col-xs-4" ng-if="app.latestMovies.results.length > ($index + 2)">
+        <div class="card card-nav-tabs">
+            <p class="movie-title"> {{app.latestMovies.results[$index + 2].title}}</p>
+             <div class="col-xs-4">
+       
+<span ng-if="app.latestMovies.results[$index + 2].poster_path.length !== 0 && app.latestMovies.results[$index + 2].poster_path !== null">
+            <img ng-src="http://image.tmdb.org/t/p/w185{{app.latestMovies.results[$index + 2].poster_path}}"
+             class="img-rounded img-responsive img-raised" width="85" height="178">
+            </span>
+
+             <span ng-if="app.latestMovies.results[$index + 2].poster_path === null">
+            <img ng-src="http://vexmovies.com/wp-content/themes/grifus2/images/noimg.png"
+             class="img-rounded img-responsive img-raised" width="85" height="178">
+            </span>
+             <div class="movie-release">
+                {{ app.getYearRelease(app.latestMovies.results[$index + 1].release_date)}}</div>
+             </div>
+         <div class="col-xs-8">
+            {{app.latestMovies.results[$index + 2].overview | limitTo : 100}}
+            {{app.latestMovies.results[$index + 2].overview.length > 100 ? '...' : ''}} 
+        </div>
+    </div>
+    </div>
+</div> 
+</main>
+
+
                 
                        <div class="row" ng-if="vm.movieData !== null">
                          <h4
