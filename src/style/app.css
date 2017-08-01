@@ -20,9 +20,13 @@ body, h1, .h1, h2, .h2, h3, .h3 {
     font-weight: 400;
 }
 .details-link {
-        font-weight: bold;
         padding: 10px 0 0 0;
 }
-.details-link a {
-     color: #9c27b0;   
+.flex-center {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+}
+.btn-primary {
+        border-color: transparent;
 }

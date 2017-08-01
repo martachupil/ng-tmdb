@@ -47,11 +47,7 @@
 
 	            <div class="row tim-row">
 	                <div class="container">
-              
-	                    <main ng-if="vm.movieData === null" >
-                        
-                    
-
+	                    <main ng-if="vm.movieData === null && app.movieDetails === null" >
                       <div class="text-center"><h4 class="ivy-color">
                           Зараз у кінотеатрах</h4></div>
 <div ng-repeat="result in app.latestMovies.results" ng-if="$index % 3 == 0" class="row">
@@ -76,7 +72,9 @@
             {{app.latestMovies.results[$index].overview.length > 100 ? '...' : ''}} 
 
             <div class="details-link">
-                <button ng-click="app.getMovieDetailesbyID(app.latestMovies.results[$index].id)">Детальніше</button></div>
+                <button class="btn btn-primary" 
+                ng-click="app.getMovieDetailesbyID(app.latestMovies.results[$index].id)">Детальніше</button>
+            </div>
         </div>
     
     </div>
@@ -100,8 +98,10 @@
          <div class="col-xs-8">
             {{app.latestMovies.results[$index + 1].overview | limitTo : 100}}
             {{app.latestMovies.results[$index + 1].overview.length > 100 ? '...' : ''}} 
-             <!-- <div class="movie-vote">
-                 {{vm.movieData.results[$index + 1].vote_average}}</div> -->
+             <div class="details-link">
+                <button class="btn btn-primary" 
+                ng-click="app.getMovieDetailesbyID(app.latestMovies.results[$index + 1].id)">Детальніше</button>
+            </div>
         </div>
         </div>
     </div>
@@ -125,18 +125,42 @@
          <div class="col-xs-8">
             {{app.latestMovies.results[$index + 2].overview | limitTo : 100}}
             {{app.latestMovies.results[$index + 2].overview.length > 100 ? '...' : ''}} 
+            <div class="details-link">
+                <button class="btn btn-primary" 
+                ng-click="app.getMovieDetailesbyID(app.latestMovies.results[$index + 2].id)">Детальніше</button>
+            </div>
         </div>
     </div>
     </div>
 </div> 
-</main>
+</main>                
+
+    <div class="row" ng-if="app.movieDetails !== null">
+        <div class="container card card-nav-tabs">
+            <div class="col-md-12"><h4 ng-bind="app.movieDetails.title"></h4>
+                <i ng-bind="app.movieDetails.original_title"></i></div>
+
+                <div class="col-md-3 flex-center">
+                    <img ng-src="http://image.tmdb.org/t/p/w185{{app.movieDetails.poster_path}}"
+                    class="img-rounded img-responsive img-raised">
+                </div>
+                <div class="col-md-9">
+                    <ul>
+                    <li>Бюджет - <span ng-bind="app.movieDetails.budget"></span></li>
+                    <li>Цитата фільму - <span ng-bind="app.movieDetails.original_title"></span></li>
+                    </ul>
+                    <div ng-bind="app.movieDetails.overview"></div>
+                </div>
+            
+        </div>
+             <!-- <pre>{{app.movieDetails | json}}</pre>   -->
+    </div>
 
 
-                
-                       <div class="row" ng-if="vm.movieData !== null">
-                         <h4
-                        ng-if="vm.movieData !== null">
-                        знайдено : <span class="ivy-color" ng-bind="vm.movieData.total_results"></span></h4>
+
+     <div class="row" ng-if="vm.movieData !== null">
+           <h4 ng-if="vm.movieData !== null">
+              знайдено : <span class="ivy-color" ng-bind="vm.movieData.total_results"></span></h4>
                  
 <div ng-repeat="result in vm.movieData.results" ng-if="$index % 3 == 0" class="row">
     <div class="col-xs-4">
@@ -183,8 +207,6 @@
          <div class="col-xs-8">
             {{vm.movieData.results[$index + 1].overview | limitTo : 100}}
             {{vm.movieData.results[$index + 1].overview.length > 100 ? '...' : ''}} 
-             <!-- <div class="movie-vote">
-                 {{vm.movieData.results[$index + 1].vote_average}}</div> -->
         </div>
         </div>
     </div>

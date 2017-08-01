@@ -29,6 +29,7 @@ class AppCtrl {
     this.$inject = ['tmdb'];
     this.tmdb = tmdb;
     this.latestMovies = null;
+    this.movieDetails = null;
 
     this.url = 'https://github.com/martachupil';
     // console.log(this.tmdb.getNewMovieReleaseDates());
@@ -43,7 +44,7 @@ class AppCtrl {
   getMovieDetailesbyID (movieId) {
     console.log(movieId);
     this.tmdb.getMovieDetailes(movieId)
-      .then((r) => console.log(r.data))
+      .then((r) => this.movieDetails = r.data)
       .catch((e) => console.error(e));
   }
 
