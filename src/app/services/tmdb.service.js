@@ -40,4 +40,8 @@ export class TMDBService {
         let url = `${BASE_URL}/3/movie/now_playing?api_key=${API_KEY}&language=uk-UA&page=1`
         return this.$http.get(url);
     }
+    getMovieDetailes (movieId) {
+        let url = `${BASE_URL}/3/movie/${movieId}?api_key=${API_KEY}&language=uk-UA`;
+        return this.$http.get(url);
+    }
 }

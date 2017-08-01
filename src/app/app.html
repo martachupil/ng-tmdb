@@ -54,14 +54,10 @@
 
                       <div class="text-center"><h4 class="ivy-color">
                           Зараз у кінотеатрах</h4></div>
-
-
-                          <div ng-repeat="result in app.latestMovies.results" ng-if="$index % 3 == 0" class="row">
+<div ng-repeat="result in app.latestMovies.results" ng-if="$index % 3 == 0" class="row">
     <div class="col-xs-4">
         <div class="card card-nav-tabs">
-            
        <p class="movie-title"> {{app.latestMovies.results[$index].title}}</p>
-            
         <div class="col-xs-4">
              <span ng-if="app.latestMovies.results[$index].poster_path.length !== 0 && app.latestMovies.results[$index].poster_path !== null">
             <img ng-src="http://image.tmdb.org/t/p/w185{{app.latestMovies.results[$index].poster_path}}"
@@ -78,6 +74,9 @@
         <div class="col-xs-8">
             {{app.latestMovies.results[$index].overview | limitTo : 100}}
             {{app.latestMovies.results[$index].overview.length > 100 ? '...' : ''}} 
+
+            <div class="details-link">
+                <button ng-click="app.getMovieDetailesbyID(app.latestMovies.results[$index].id)">Детальніше</button></div>
         </div>
     
     </div>

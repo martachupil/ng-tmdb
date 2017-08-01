@@ -37,8 +37,14 @@ class AppCtrl {
     this.tmdb.getNewMovieReleaseDates()
       .then((r) => this.latestMovies = r.data)
       .catch((e) => console.error(e));
-    }
+    } 
+  }
 
+  getMovieDetailesbyID (movieId) {
+    console.log(movieId);
+    this.tmdb.getMovieDetailes(movieId)
+      .then((r) => console.log(r.data))
+      .catch((e) => console.error(e));
   }
 
   getYearRelease(date) {
